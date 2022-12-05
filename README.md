@@ -1,32 +1,25 @@
 # Project: My own Salt-state
 
-Git - Micro - Netcat
+### Salt state: Git - Micro - Netcat
 
-## Tehtävänanto: 
-### Oma suola. Tee ensimmäinen työversio projektistasi. Miniprojektilla tulee olla jokin tarkoitus, vaikka se olisi keksitty. Projektilla tulee olla sivu (esim. Github, Gitlab...), josta selviää projektin perustiedot. Toiminnallisuutta tulee olla kokeiltu, mutta sen ei tarvitse olla valmis. Valmiit projektit esitellään viimeisellä tapaamiskerralla. Tässä tehtävässä palautettava työversio ei siis ole vielä lopullinen.
-
-Ajattelin tehdä Saltilla tilan, joka asentaa muutamia itselleni hyödyllisiä ohjelmia orja-koneisiin Linux-ympäristössä. Ohjelmat on valittu sillä perusteella, että olemme käyttäneet niitä jonkin verran tämän kurssin aikana ja olen itse tykästynyt käyttämään ko. ohjelmia. Kyseiset ohjelmat eivät tule defaulttina Debianin tai Ubuntun mukana, jonka vuoksia ajattelin, että olisi kätevää, jos olisi sellainen salt-state, joka tekisi nämä asennukset yhdellä kertaa kaikille orja-koneille.
-
-Ko. ohjelmat ovat: 
+In this project I'm going to create a Salt-state by using SaltStack. My Salt-state will download the following files to the minion-virtual machines:
 - Git
 - Micro
 - Netcat
 
+This project is part of the course called "Configuration Management Systems - Palvelinten Hallinta" by Tero Karvinen. You can find more information about this course and the project assignment from [here](https://terokarvinen.com/2022/palvelinten-hallinta-2022p2/). 
 
+I'll be using Virtual Machines on Virtual Box. I am going to create a Salt-master and then few Salt-minions by using Vagrant.
+That will be the environment where I'm goint to test my Salt state.
 
+Git, Micro and Netcat were selected because we have used them a lot during this course and I have found them very useful. This is why I felt it would be nice to try to figure out how to get them to the devices at once instead of doing the downloading manually to each of the vm's.
+Git, Micro and Netcat are also files that are not included to Linux based operation systems by default.
 
-### VINKKEJÄ:
+You can find all the sources used in this project at the end of this file.
 
-Oman miniprojektin weppisivu (voi olla myös Github, Gitlab tms)
+### Environment
 
-Työn weppisivulle taitoksen yläpuolelle (skrollaamatta näkyvään osaan) ainakin
-Yhden rivin selitys - mikä tämä on
-Ruutukaappaus
-Lisenssi (suosittelen "GNU General Public License" versio 3, lisenssin saa valita itse)
-Sivulta on hyvä löytyä hieman alempaa
-Miten tämä otetaan käyttöön
-Miten (millä yksinkertaisella testillä) näen, että tämä toimii
-(teknisissä ratkaisuissa, kuten tämä) Parilla sanalla, miten tämä on tehty
-Mille kurssille työ on tehty
-Itse laitan projekteihin nimen ja linkitän kaikki sivuni ja projektieni sivut toisiinsa
-Suosittelen kirjoittamaan englanniksi, saa kirjoittaa myös suomeksi
+- Host-computer: Microsoft Windows 11 Home (version 10.0.22621 N/A Build 22621)
+- Vagrant (version 2.3.3)
+- Virtual Box (version 6.1)
+
