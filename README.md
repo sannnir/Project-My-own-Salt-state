@@ -1,6 +1,8 @@
 # Project: My own Salt-state
 
-##Tehtävänanto: 
+Git - Micro - Netcat
+
+## Tehtävänanto: 
 ### Oma suola. Tee ensimmäinen työversio projektistasi. Miniprojektilla tulee olla jokin tarkoitus, vaikka se olisi keksitty. Projektilla tulee olla sivu (esim. Github, Gitlab...), josta selviää projektin perustiedot. Toiminnallisuutta tulee olla kokeiltu, mutta sen ei tarvitse olla valmis. Valmiit projektit esitellään viimeisellä tapaamiskerralla. Tässä tehtävässä palautettava työversio ei siis ole vielä lopullinen.
 
 Ajattelin tehdä Saltilla tilan, joka asentaa muutamia itselleni hyödyllisiä ohjelmia orja-koneisiin Linux-ympäristössä. Ohjelmat on valittu sillä perusteella, että olemme käyttäneet niitä jonkin verran tämän kurssin aikana ja olen itse tykästynyt käyttämään ko. ohjelmia. Kyseiset ohjelmat eivät tule defaulttina Debianin tai Ubuntun mukana, jonka vuoksia ajattelin, että olisi kätevää, jos olisi sellainen salt-state, joka tekisi nämä asennukset yhdellä kertaa kaikille orja-koneille.
@@ -10,7 +12,7 @@ Ko. ohjelmat ovat:
 - Micro
 - Netcat
 
-Tämän lisäksi
+
 
 
 ### VINKKEJÄ:
