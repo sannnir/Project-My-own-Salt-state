@@ -51,6 +51,6 @@ And after that when I opened micro, it was there! As well as git and netcat too.
 
 
 *****
-####Sources:
+#### Sources:
 
 SaltStack 2022. Salt.State.Pkg. Readable: https://docs.saltproject.io/en/latest/ref/states/all/salt.states.pkg.html. Read: 7.12.2022
