@@ -23,3 +23,9 @@ You can find all the sources used in this project at the end of this file.
 - Vagrant (version 2.3.3)
 - Virtual Box (version 6.1)
 
+### Tasks
+
+1. Create virtual machines and install a Salt master-minion architecture.
+2. Download Git, Micro and Netcat to master
+3. Copy each programs source list to this salt-project folder and create the init.sls-file
+4. Try the salt state locally first then to the minions.
