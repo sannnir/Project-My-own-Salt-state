@@ -29,3 +29,21 @@ You can find all the sources used in this project at the end of this file.
 2. Download Git, Micro and Netcat to master
 3. Copy each programs source list to this salt-project folder and create the init.sls-file
 4. Try the salt state locally first then to the minions.
+
+
+
+4. Testing locally that my salt-state works
+I first deleted all the files (git, micro, netcat) because I got them all on my master.
+
+  sudo apt purge micro
+  sudo apt purge git
+  sudo apt purge netcat
+
+After that I tried to open each one of the programs above but I got the following the error message:
+"/usr/bin/git: No such file or directory"
+
+Then I tried to run the salt-state locally
+
+  salt-call --global state.apply TESTI
+
+And after that when I opened micro, it was there! As well as git and netcat too. 
