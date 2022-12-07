@@ -31,13 +31,13 @@ You can find all the sources used in this project at the end of this file.
 4. Try the salt state locally first then to the minions.
 
 
-
-4. Testing locally that my salt-state works
+Own notes
+Testing locally that my salt-state works
 I first deleted all the files (git, micro, netcat) because I got them all on my master.
 
-  sudo apt purge micro
-  sudo apt purge git
-  sudo apt purge netcat
+    sudo apt purge micro
+    sudo apt purge git
+    sudo apt purge netcat
 
 After that I tried to open each one of the programs above but I got the following the error message:
 "/usr/bin/git: No such file or directory"
