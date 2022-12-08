@@ -68,7 +68,7 @@ Then I'll check the hostname ip from the master so that I am able to manage the 
 Now we are going to need some minions. 
 I am going to create two Virtual Machines by using Vagrant.
 
-Since I have already installed Vagrant to my host computer (Windows 11 Home) I am going to skip that phase. Let's open Windows PowerShell and create a new folder for Vagrantfile where I am going to qualify the amount of VMs and also tell which OS box they are going to have. Instructions of creating that Vagrantfile are from [here](https://terokarvinen.com/2021/two-machine-virtual-network-with-debian-11-bullseye-and-vagrant/).
+Since I have already installed Vagrant to my host computer (Windows 11 Home) I am going to skip "Install Vagrant"-phase. Let's open Windows PowerShell and create a new folder for Vagrantfile where I am going to qualify the amount of VMs and also tell which OS box they are going to have. Instructions of creating that Vagrantfile are from [here](https://terokarvinen.com/2021/two-machine-virtual-network-with-debian-11-bullseye-and-vagrant/).
 
 Open PowerShell, create a folder, go there and create a file.
         
@@ -83,16 +83,29 @@ In Vagrantfile I am going to use debian/bullseye64 box, which will install Debia
 <img width="532" alt="image" src="https://user-images.githubusercontent.com/117899949/206436866-933b277d-1be3-45d1-b7f4-3684dda61c9e.png">
 
 
-Then I will crete the vms by giving a commmand. Note: on Windowds notepad will create a Vagrantfile as Vagrantfile.txt format. Make sure the name is just `Vagrantfile` without the .txt. This mistake happened to me and I had to change the make manully after I created this file.
+Then I will crete the VMs by giving a command `vagrant init Vagrantfile`. 
+Note: on Windowds notepad will create a Vagrantfile as Vagrantfile.txt format. Make sure the name is just `Vagrantfile` without the .txt. This mistake happened to me and I had to change the make manully after I created this file.
 
         vagrant init Vagrantfile
-        
-<img width="446" alt="image" src="https://user-images.githubusercontent.com/117899949/206418427-83082a8d-50a1-4cd7-ad7a-a9b40adad287.png">
 
-Then we are ready to start them
+Then we are ready to start them by command:
 
         vagrant up
         
+<img width="575" alt="image" src="https://user-images.githubusercontent.com/117899949/206442534-3ca699d9-3133-4b8c-89f7-4a4b1c05fa48.png">
+
+And now I have 3 VM in total. One master and two becoming minions:
+
+<img width="362" alt="image" src="https://user-images.githubusercontent.com/117899949/206442656-c55e8d59-d70a-4870-b74b-6d498e6564cc.png">
+
+With Vagrant you can take a SSH connection to VMs by commands
+
+        vagrant ssh <computername>
+
+I will update the them, install Salt-minions to them and add master's ip address to the minionfile so that the minions will know who will manage them. 
+
+
+
 
 4.
 Testing locally that my salt-state works
