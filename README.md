@@ -32,6 +32,11 @@ You can find all the sources used in this project at the end of this file.
 
 
 Own notes
+### 1. Create virtual machines and install a Salt master-minion architecture
+
+By creating minions I am going to use Vagrant. I have already downloaded it to my host-computer (you can find more info about that from [here](https://github.com/sannnir/h6_Kulkurin-Projekti))
+
+
 Testing locally that my salt-state works
 I first deleted all the files (git, micro, netcat) because I got them all on my master.
 
