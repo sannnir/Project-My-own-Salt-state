@@ -31,12 +31,49 @@ You can find all the sources used in this project at the end of this file.
 4. Try the salt state locally first then to the minions.
 
 
-Own notes
+
 ### 1. Create virtual machines and install a Salt master-minion architecture
 
-By creating minions I am going to use Vagrant. I have already downloaded it to my host-computer (you can find more info about that from [here](https://github.com/sannnir/h6_Kulkurin-Projekti))
+As a master I am going to use Ubuntu (version 22.04.1) virtual machine that I have created earlier. But I'm going to create few minions so that I can really test my salt-state on them.
+
+By creating minions I'm going to use Vagrant which I already have on my host-computer. Vagrant is an open-source tool that helps you create virtual environments super easily. It is recommend to install Vagrant to your host computer. Vagrant also need a hypervisor, which can be VirtualBox, to be able to create virtual machines. Vagrant uses boxes which are like operating system images that it clones to the new VM. (Vagrant 2022.) You can find different boxes [here](https://app.vagrantup.com/boxes/search).
+
+#### Master (Ubuntu):
+First I deleted SaltStack from my master so that I could start over.
+
+        sudo apt purge salt-master
+        sudo apt purge salt-minion
+
+Little test and the result is that I don't have Salt on my computer.
+
+<img width="277" alt="image" src="https://user-images.githubusercontent.com/117899949/206404447-7ad15a3e-be7a-44e4-93f8-8f3271bee6c3.png">
+
+Let's start by making updates `sudo apt update/sudo apt upgrade` and then installing the Salt master.
+
+        sudo apt -y install salt-master
+
+Little test to see that Salt-master has been installed: 
+
+<img width="365" alt="image" src="https://user-images.githubusercontent.com/117899949/206406814-53e78762-8e65-49bf-8b53-18b48738fb6a.png">
+
+Then I'll check the hostname ip from the master so that I am able to manage the minions later on.
+
+        hostname -I
+
+<img width="223" alt="image" src="https://user-images.githubusercontent.com/117899949/206407443-0c49f8c8-19c0-4234-b35f-656ec0110e9a.png">
 
 
+#### Minions:
+
+Now we are going to need some minions. 
+I am going to create 3 Virtual Machines by using Vagrant.
+
+Since I have already installed Vagrant to my host computer (Windows 11 Home) I am going to skip that phase. Let's open Windows PowerShell and create a new folder for Vagrantfile where I am going to qualify the amount of VMs and also tell which OS box they are going to have. Instructions for creating that file are from [here](https://terokarvinen.com/2021/two-machine-virtual-network-with-debian-11-bullseye-and-vagrant/).
+
+
+
+
+4.
 Testing locally that my salt-state works
 I first deleted all the files (git, micro, netcat) because I got them all on my master.
 
@@ -58,4 +95,8 @@ And after that when I opened micro, it was there! As well as git and netcat too.
 *****
 #### Sources:
 
-SaltStack 2022. Salt.State.Pkg. Readable: https://docs.saltproject.io/en/latest/ref/states/all/salt.states.pkg.html. Read: 7.12.2022
+SaltStack 2022. Salt.State.Pkg. URL: https://docs.saltproject.io/en/latest/ref/states/all/salt.states.pkg.html. Accessed: 7.12.2022
+
+Tero Karvinen 2018. Salt Quickstart - Salt Stack Master and Slace on Ubuntu Linux. URL: https://terokarvinen.com/2018/salt-quickstart-salt-stack-master-and-slave-on-ubuntu-linux/. Accessed: 8.12.2022
+
+Vagrant 2022. Development environments made easy. URL: https://www.vagrantup.com/. Accessed: 8.12.2022
