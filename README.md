@@ -68,10 +68,30 @@ Then I'll check the hostname ip from the master so that I am able to manage the 
 Now we are going to need some minions. 
 I am going to create 3 Virtual Machines by using Vagrant.
 
-Since I have already installed Vagrant to my host computer (Windows 11 Home) I am going to skip that phase. Let's open Windows PowerShell and create a new folder for Vagrantfile where I am going to qualify the amount of VMs and also tell which OS box they are going to have. Instructions for creating that file are from [here](https://terokarvinen.com/2021/two-machine-virtual-network-with-debian-11-bullseye-and-vagrant/).
+Since I have already installed Vagrant to my host computer (Windows 11 Home) I am going to skip that phase. Let's open Windows PowerShell and create a new folder for Vagrantfile where I am going to qualify the amount of VMs and also tell which OS box they are going to have. Instructions of creating that Vagrantfile are from [here](https://terokarvinen.com/2021/two-machine-virtual-network-with-debian-11-bullseye-and-vagrant/).
 
+Open PowerShell, create a folder, go there and create a file.
+        
+        mkdir 3hosts
+        cd ./3hosts/
+        notepad.exe Vagrantfile
 
+<img width="382" alt="image" src="https://user-images.githubusercontent.com/117899949/206416234-bf7f2070-0fbb-460c-9365-20a288298534.png">
 
+In Vagrantfile I am going to use debian/bullseye64 box, which will install Debian 11 OS to the minion vms.
+
+<img width="505" alt="image" src="https://user-images.githubusercontent.com/117899949/206417553-3d0e96b3-3211-458c-9360-cb97fb271603.png">
+
+Then I will crete the vms by giving a commmand. Note: on Windowds notepad will create a Vagrantfile as Vagrantfile.txt format. Make sure the name is just `Vagrantfile` without the .txt. This mistake happened to me and I had to change the make manully after I created this file.
+
+        vagrant init Vagrantfile
+        
+<img width="446" alt="image" src="https://user-images.githubusercontent.com/117899949/206418427-83082a8d-50a1-4cd7-ad7a-a9b40adad287.png">
+
+Then we are ready to start them
+
+        vagrant up
+        
 
 4.
 Testing locally that my salt-state works
