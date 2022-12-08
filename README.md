@@ -94,18 +94,49 @@ Then we are ready to start them by command:
         
 <img width="575" alt="image" src="https://user-images.githubusercontent.com/117899949/206442534-3ca699d9-3133-4b8c-89f7-4a4b1c05fa48.png">
 
-And now I have 3 VM in total. One master and two becoming minions:
+And now I have three VMs in total. One master and two becoming minions:
 
 <img width="362" alt="image" src="https://user-images.githubusercontent.com/117899949/206442656-c55e8d59-d70a-4870-b74b-6d498e6564cc.png">
 
-With Vagrant you can take a SSH connection to VMs by commands
+At this point I am goint to make a ping-test from t001 and t002 to master just to see that the connections between them is ok.
+To check the ip address from the Ubuntu (master) command `ip addr` is ok. I'll copy the ip address and go to t001.
+
+With Vagrant you can take SSH connection to VMs by command:
 
         vagrant ssh <computername>
 
-I will update the them, install Salt-minions to them and add master's ip address to the minionfile so that the minions will know who will manage them. 
+        vagrant ssh t001
+        ping 10.0.2.15
+        exit
+        
+        vagrant ssh t002
+        ping 10.0.2.15
+        exit
+        
+It works. 
+
+<img width="440" alt="image" src="https://user-images.githubusercontent.com/117899949/206446173-9f57cf61-8778-46c9-88c0-04845f737e6e.png">
+<img width="415" alt="image" src="https://user-images.githubusercontent.com/117899949/206446364-9f655aa5-3f8b-4599-8ef6-f89f3bb79ecb.png">
 
 
+Next I'm going to update t001 and t002, install Salt-minions to them and add master's ip address to the minion-file so that the minions will know who will manage them. 
 
+        vagrant ssh t001
+        sudo apt update
+        sudo apt -y install salt-minion
+        
+Then I can go the the minion file and add the master's ip-address to the file. Minion file will be at `etc/salt`
+        
+<img width="304" alt="image" src="https://user-images.githubusercontent.com/117899949/206448789-376f9b6b-712a-4770-a579-dfa34839882a.png">
+
+<img width="413" alt="image" src="https://user-images.githubusercontent.com/117899949/206449216-066321ce-ba09-41d8-be38-2db47c18d862.png">
+
+After changing the file you have to restart the Salt-minion.
+
+        sudo systemctl restart salt-minion.service
+        exit
+
+Then I'll repeat this same thing to the t002 too.
 
 4.
 Testing locally that my salt-state works
