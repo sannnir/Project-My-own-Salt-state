@@ -138,6 +138,27 @@ After changing the file you have to restart the Salt-minion.
 
 Then I'll repeat this same thing to the t002 too.
 
+Only this left is to confirm the keys on master.
+So lets go back to our master and check if there are keys to be accepted
+
+        sudo salt-key 
+
+So the keys are empty. At this point I need to check what ports my master is listening and if those ports are open at minions.
+<img width="224" alt="image" src="https://user-images.githubusercontent.com/117899949/206455045-6ab3d88a-7ef0-42eb-8638-888cf3daa9e5.png">
+
+Command `sudo ss -lpt` shows the ports that master is listening. There are `4505` and `4506`
+<img width="368" alt="image" src="https://user-images.githubusercontent.com/117899949/206455418-60d1dca9-43ef-47e4-8e01-90cc97515e48.png">
+
+I go to t001 and install netcat to see the ports it is listening and I can see that the connection is refused.
+
+<img width="482" alt="image" src="https://user-images.githubusercontent.com/117899949/206455674-788535d4-3d60-4d60-8d2b-e34da67a430c.png">
+
+After little googling I found that with ufw you can open ports so let's download this to t001 and t002 and open the tcp ports 4505 & 4506.
+
+<img width="336" alt="image" src="https://user-images.githubusercontent.com/117899949/206457082-7e883409-fbf7-4e6e-b31b-476ada13f237.png">
+
+
+
 4.
 Testing locally that my salt-state works
 I first deleted all the files (git, micro, netcat) because I got them all on my master.
@@ -165,3 +186,5 @@ SaltStack 2022. Salt.State.Pkg. URL: https://docs.saltproject.io/en/latest/ref/s
 Tero Karvinen 2018. Salt Quickstart - Salt Stack Master and Slace on Ubuntu Linux. URL: https://terokarvinen.com/2018/salt-quickstart-salt-stack-master-and-slave-on-ubuntu-linux/. Accessed: 8.12.2022
 
 Vagrant 2022. Development environments made easy. URL: https://www.vagrantup.com/. Accessed: 8.12.2022
+
+https://unixcop.com/how-to-open-ports-in-ubuntu-debian/
