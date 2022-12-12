@@ -5,7 +5,6 @@
 In this project I'm going to create a Salt-state by using SaltStack. My Salt-state will download the following files to the minion-virtual machines:
 - Git
 - Micro
-- VScode
 
 This project is part of the course called "Configuration Management Systems - Palvelinten Hallinta" by Tero Karvinen. You can find more information about this course and the project assignment from [here](https://terokarvinen.com/2022/palvelinten-hallinta-2022p2/). 
 
@@ -197,7 +196,12 @@ I wanted to create a state that installs the following programs:
 - Git
 - Micro
 
-creating a new folder `sudo mkdir ownstate`
+First I checked that I don't have thoseo my master:
+
+<img width="370" alt="image" src="https://user-images.githubusercontent.com/117899949/207050535-86e999a3-e232-40e6-9e44-e060c90b74bb.png">
+
+
+THen I created a new folder `sudo mkdir ownstate`
 
         sudo mkdir ownstate
         cd ownstate
@@ -212,39 +216,38 @@ Sudoedit opens a Nano editor. I added the path and then the packages:
               - git
               - micro
               
-        
+<img width="247" alt="image" src="https://user-images.githubusercontent.com/117899949/207050743-7bb927a1-d3bc-43ff-b912-532f13b5b4e7.png">
 
+Then I tested it locally.
 
+<img width="454" alt="image" src="https://user-images.githubusercontent.com/117899949/207052027-0244f579-be5c-47e8-a82f-54b54b66cf24.png">
 
+Micro can be found:
 
+<img width="253" alt="image" src="https://user-images.githubusercontent.com/117899949/207052130-1febcfc8-7743-4469-88be-f15a2ca807d5.png">
+
+And git also:
+
+<img width="472" alt="image" src="https://user-images.githubusercontent.com/117899949/207052211-6258e8c5-d8b3-4d78-8a74-0c3cdf187e92.png">
+
+Let's run this state to minion too.
+
+<img width="488" alt="image" src="https://user-images.githubusercontent.com/117899949/207052751-bffcfcf4-fd6f-43ca-857a-300b1602b885.png">
+
+Then I'll check if minion has those two too.
+
+<img width="362" alt="image" src="https://user-images.githubusercontent.com/117899949/207052889-a1c33df9-f465-413b-a5a4-9dd6cbe45485.png">
+
+Minion t002 looks ok with both git and micro
+
+Git:
+<img width="465" alt="image" src="https://user-images.githubusercontent.com/117899949/207053004-37528e92-0b8b-42b5-929e-d5dd9483d455.png">
+
+Micro
+<img width="311" alt="image" src="https://user-images.githubusercontent.com/117899949/207053216-924baa8d-03b1-426b-ac3c-a83db4eebb87.png">
 
 
 *****
-
-
-
-
-4.
-Testing locally that my salt-state works
-I first deleted all the files (git, micro, netcat) because I got them all on my master.
-
-    sudo apt purge micro
-    sudo apt purge git
-    sudo apt purge netcat
-
-After that I tried to open each one of the programs above but I got the following the error message:
-"/usr/bin/git: No such file or directory"
-
-Then I tried to run the salt-state locally
-
-  salt-call --global state.apply TESTI
-
-And after that when I opened micro, it was there! As well as git and netcat too. 
-
-
-
-
-
 *****
 #### Sources:
 
