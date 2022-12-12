@@ -157,7 +157,8 @@ So lets go back to our master and check if there are keys to be accepted
 So the keys were empty. 
 I didn't know how to fix this and got stuck. After two days of googling the problem I still didn't get this. Time was running out so I had to start over and do this again with only two VMs.*
 
-I deleded all extra VMs and deleted SaltStacks from VMs. I started over by installing Salt master to the other VM and Salt-minion to the other one. At least I got familiar with the commands of `sudo apt purge salt-master & salt-minion`. Yey.
+I deleded all VMs and deleted SaltStacks from VMs. I started over by installing Salt master to the other VM and Salt-minion to the other one. At least I got familiar with the commands of `sudo apt purge salt-master & salt-minion` and `vagrant destroy`. Yey.
+
 t001 was going to be the master and t002 was going to be the minion.
 
 
