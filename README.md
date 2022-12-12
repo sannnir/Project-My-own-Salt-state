@@ -5,7 +5,7 @@
 In this project I'm going to create a Salt-state by using SaltStack. My Salt-state will download the following files to the minion-virtual machines:
 - Git
 - Micro
-- Netcat
+- VScode
 
 This project is part of the course called "Configuration Management Systems - Palvelinten Hallinta" by Tero Karvinen. You can find more information about this course and the project assignment from [here](https://terokarvinen.com/2022/palvelinten-hallinta-2022p2/). 
 
@@ -180,10 +180,13 @@ Let's start by creating a folder for the states
        
 First I will start with easy one: hello world test just to see this works.
 
+Creating the state:
 <img width="323" alt="image" src="https://user-images.githubusercontent.com/117899949/207039397-e690e0b8-3cad-444a-82f6-c5b4f986636e.png">
 
+Applying the state:
 <img width="398" alt="image" src="https://user-images.githubusercontent.com/117899949/207039456-6ca863ce-6dc5-46e3-91f8-966fb2b7e38b.png">
 
+Little test:
 <img width="461" alt="image" src="https://user-images.githubusercontent.com/117899949/207040993-c3cc7d5b-0a39-436a-810c-39bbb945cd70.png">
 
 All good, so we can move on to creating our own state.
@@ -193,9 +196,8 @@ All good, so we can move on to creating our own state.
 I wanted to create a state that installs the following programs:
 - Git
 - Micro
-- Netcat
 
-Let's start by creating a new folder `sudo mkdir ownstate`
+creating a new folder `sudo mkdir ownstate`
 
         sudo mkdir ownstate
         cd ownstate
@@ -209,9 +211,9 @@ Sudoedit opens a Nano editor. I added the path and then the packages:
             - pkgs:
               - git
               - micro
-              - netcat
+              
         
-<img width="380" alt="image" src="https://user-images.githubusercontent.com/117899949/207042030-f16b1157-3e4c-4bbe-82e1-baa0782accd1.png">
+
 
 
 
