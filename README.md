@@ -153,10 +153,12 @@ So lets go back to our master and check if there are keys to be accepted
 
 <img width="194" alt="image" src="https://user-images.githubusercontent.com/117899949/207006820-05118f32-e487-4424-8d5b-39f5cd08a16e.png">
 
-#### *Plot twist:* 
+#### *Plot twist:
 So the keys were empty. 
-I didn't know how to fix this and got stuck. After two days of googling the problem I still didn't get this. Time was running out so I had to start over and do this again with only two VMs.
+I didn't know how to fix this and got stuck. After two days of googling the problem I still didn't get this. Time was running out so I had to start over and do this again with only two VMs.*
 
+I deleded all extra VMs and deleted SaltStacks from VMs. I started over by installing Salt master to the other VM and Salt-minion to the other one. At least I got familiar with the commands of `sudo apt purge salt-master & salt-minion`. Yey.
+t001 was going to be the master and t002 was going to be the minion.
 
 
 
