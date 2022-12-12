@@ -197,6 +197,25 @@ I wanted to create a state that installs the following programs:
 
 Let's start by creating a new folder `sudo mkdir ownstate`
 
+        sudo mkdir ownstate
+        cd ownstate
+        sudoedit init.sls
+        
+Sudoedit opens a Nano editor. I added the path and then the packages:
+
+        #/srv/salt/ownstate/init.sls
+        mypkgs:
+          pkg.installed:
+            - pkgs:
+              - git
+              - micro
+              - netcat
+        
+<img width="380" alt="image" src="https://user-images.githubusercontent.com/117899949/207042030-f16b1157-3e4c-4bbe-82e1-baa0782accd1.png">
+
+
+
+
 
 *****
 
