@@ -105,7 +105,7 @@ Then we are ready to start them by command:
 
 And now I have three VMs in total. One master and two becoming minions:
 
-<img width="362" alt="image" src="https://user-images.githubusercontent.com/117899949/206442656-c55e8d59-d70a-4870-b74b-6d498e6564cc.png">
+<img width="188" alt="image" src="https://user-images.githubusercontent.com/117899949/207007847-50bc6cc3-4350-49e4-a994-a685b6630b97.png">
 
 At this point I am goint to make a ping-test from t001 and t002 to master just to see that the connections between them is ok.
 To check the ip address from the Ubuntu (master) command `ip addr` is ok. I'll copy the ip address and go to t001.
