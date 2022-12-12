@@ -34,34 +34,43 @@ You can find all the sources used in this project at the end of this file.
 
 ### 1. Create virtual machines and install a Salt master-minion architecture
 
-As a master I am going to use Ubuntu (version 22.04.1) virtual machine that I have created earlier. But I'm going to create few minions so that I can really test my salt-state on them.
+As a master I am going to a virtual machine with the help of Vargant. I'm also going to create two minions too so that I can really test my salt-state on them.
 
-By creating minions I'm going to use Vagrant which I already have on my host-computer. Vagrant is an open-source tool that helps you create virtual environments super easily. It is recommend to install Vagrant to your host computer. Vagrant also need a hypervisor, which can be VirtualBox, to be able to create virtual machines. Vagrant uses boxes which are like operating system images that it clones to the new VM. (Vagrant 2022.) You can find different boxes [here](https://app.vagrantup.com/boxes/search).
+By creating VMs I'm going to use Vagrant which I already have on my host-computer. Vagrant is an open-source tool that helps you create virtual environments super easily. It is recommend to install Vagrant to your host computer. Vagrant also need a hypervisor, which can be VirtualBox, to be able to create virtual machines. Vagrant uses boxes which are like operating system images that it clones to the new VM. (Vagrant 2022.) You can find different boxes [here](https://app.vagrantup.com/boxes/search).
 
-#### Master (Ubuntu):
-First I deleted SaltStack from my master so that I could start over.
+#### Master (Debian 11):
+First I created a vms folder to create the VM. I created Debian 11 with the box `debian/bullseye64`. 
 
-        sudo apt purge salt-master
-        sudo apt purge salt-minion
+        vagrant init debian/bullseye64
+        vagrant up
 
-Little test and the result is that I don't have Salt on my computer.
+<img width="416" alt="image" src="https://user-images.githubusercontent.com/117899949/206994665-4e9581c2-23d3-4d69-b5eb-7c385da9fde8.png">
 
-<img width="277" alt="image" src="https://user-images.githubusercontent.com/117899949/206404447-7ad15a3e-be7a-44e4-93f8-8f3271bee6c3.png">
-
+I'll take a ssh connection with Vagrant to my new VM:
+        
+        vagrant ssh
+        
 Let's start by making updates `sudo apt update/sudo apt upgrade` and then installing the Salt master.
 
         sudo apt -y install salt-master
 
 Little test to see that Salt-master has been installed: 
 
-<img width="365" alt="image" src="https://user-images.githubusercontent.com/117899949/206406814-53e78762-8e65-49bf-8b53-18b48738fb6a.png">
+<img width="447" alt="image" src="https://user-images.githubusercontent.com/117899949/206995010-0478a089-74fd-4a0b-a036-345f607330c5.png">
 
 Then I'll check the hostname ip from the master so that I am able to manage the minions later on.
 
         hostname -I
 
-<img width="223" alt="image" src="https://user-images.githubusercontent.com/117899949/206407443-0c49f8c8-19c0-4234-b35f-656ec0110e9a.png">
+<img width="243" alt="image" src="https://user-images.githubusercontent.com/117899949/206995094-197f1c8e-5c8e-438a-b18f-d45308347190.png">
 
+The last thing is to check that the ports 4505/tcp and 4506/tcp are open.
+
+        ss -lntu
+
+<img width="499" alt="image" src="https://user-images.githubusercontent.com/117899949/206998740-c5527652-8a5e-40cf-823f-c9152d79ccfa.png">
+
+This looks ok. Master is listening those ports.
 
 #### Minions:
 
@@ -129,7 +138,7 @@ Then I can go the the minion file and add the master's ip-address to the file. M
         
 <img width="304" alt="image" src="https://user-images.githubusercontent.com/117899949/206448789-376f9b6b-712a-4770-a579-dfa34839882a.png">
 
-<img width="413" alt="image" src="https://user-images.githubusercontent.com/117899949/206449216-066321ce-ba09-41d8-be38-2db47c18d862.png">
+<img width="412" alt="image" src="https://user-images.githubusercontent.com/117899949/207006160-e2ed0448-d8a4-4499-82f0-f8eb087aff09.png">
 
 After changing the file you have to restart the Salt-minion.
 
@@ -143,19 +152,11 @@ So lets go back to our master and check if there are keys to be accepted
 
         sudo salt-key 
 
-So the keys are empty. At this point I need to check what ports my master is listening and if those ports are open at minions.
-<img width="224" alt="image" src="https://user-images.githubusercontent.com/117899949/206455045-6ab3d88a-7ef0-42eb-8638-888cf3daa9e5.png">
+<img width="194" alt="image" src="https://user-images.githubusercontent.com/117899949/207006820-05118f32-e487-4424-8d5b-39f5cd08a16e.png">
 
-Command `sudo ss -lpt` shows the ports that master is listening. There are `4505` and `4506`
-<img width="368" alt="image" src="https://user-images.githubusercontent.com/117899949/206455418-60d1dca9-43ef-47e4-8e01-90cc97515e48.png">
+So the keys are empty.. Something is not right.
 
-I go to t001 and install netcat to see the ports it is listening and I can see that the connection is refused.
 
-<img width="482" alt="image" src="https://user-images.githubusercontent.com/117899949/206455674-788535d4-3d60-4d60-8d2b-e34da67a430c.png">
-
-After little googling I found that with ufw you can open ports so let's download this to t001 and t002 and open the tcp ports 4505 & 4506.
-
-<img width="336" alt="image" src="https://user-images.githubusercontent.com/117899949/206457082-7e883409-fbf7-4e6e-b31b-476ada13f237.png">
 
 
 
