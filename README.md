@@ -1,6 +1,6 @@
 # Project: My own Salt-state
 
-### Salt state: Git - Micro - Netcat
+### Salt state: Git - Micro 
 
 In this project I'm going to create a Salt-state by using SaltStack. My Salt-state will download the following files to the minion-virtual machines:
 - Git
