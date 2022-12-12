@@ -241,9 +241,11 @@ Then I'll check if minion has those two too.
 Minion t002 looks ok with both git and micro
 
 Git:
+
 <img width="465" alt="image" src="https://user-images.githubusercontent.com/117899949/207053004-37528e92-0b8b-42b5-929e-d5dd9483d455.png">
 
-Micro
+Micro:
+
 <img width="311" alt="image" src="https://user-images.githubusercontent.com/117899949/207053216-924baa8d-03b1-426b-ac3c-a83db4eebb87.png">
 
 
