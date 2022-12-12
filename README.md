@@ -161,6 +161,10 @@ I deleded all VMs and deleted SaltStacks from VMs. I started over by installing 
 
 t001 was going to be the master and t002 was going to be the minion.
 
+This time I got the keys so my test-environment was ready. 
+
+<img width="323" alt="image" src="https://user-images.githubusercontent.com/117899949/207035909-fad6153f-27cf-4c92-86c0-52d82a1f4d78.png">
+
 
 
 
