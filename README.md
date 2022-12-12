@@ -157,13 +157,48 @@ So lets go back to our master and check if there are keys to be accepted
 So the keys were empty. 
 I didn't know how to fix this and got stuck. After two days of googling the problem I still didn't get this. Time was running out so I had to start over and do this again with only two VMs.*
 
-I deleded all VMs and deleted SaltStacks from VMs. I started over by installing Salt master to the other VM and Salt-minion to the other one. At least I got familiar with the commands of `sudo apt purge salt-master & salt-minion` and `vagrant destroy`. Yey.
+I deleded all VMs and deleted SaltStacks from VMs. I started over by installing Salt master to the other VM (Debian 11) and Salt-minion to the other one (Debian 11). At least I got familiar with the commands of `sudo apt purge salt-master & salt-minion` and `vagrant destroy`. Yey.
 
 t001 was going to be the master and t002 was going to be the minion.
 
 This time I got the keys so my test-environment was ready. 
 
 <img width="323" alt="image" src="https://user-images.githubusercontent.com/117899949/207035909-fad6153f-27cf-4c92-86c0-52d82a1f4d78.png">
+
+Little test that the master-minion architecture works and we're reade to move on.
+
+<img width="344" alt="image" src="https://user-images.githubusercontent.com/117899949/207037387-82947cf9-fdf0-48f7-acf8-27835fdd6323.png">
+
+
+
+## 2. Copy each programs source list to this salt-project folder and create the init.sls-file
+
+#### Master:
+Let's start by creating a folder for the states
+
+        sudo mkdir /srv/salt/
+       
+First I will start with easy one: hello world test just to see this works.
+
+<img width="323" alt="image" src="https://user-images.githubusercontent.com/117899949/207039397-e690e0b8-3cad-444a-82f6-c5b4f986636e.png">
+
+<img width="398" alt="image" src="https://user-images.githubusercontent.com/117899949/207039456-6ca863ce-6dc5-46e3-91f8-966fb2b7e38b.png">
+
+<img width="461" alt="image" src="https://user-images.githubusercontent.com/117899949/207040993-c3cc7d5b-0a39-436a-810c-39bbb945cd70.png">
+
+All good, so we can move on to creating our own state.
+
+*****
+
+I wanted to create a state that installs the following programs:
+- Git
+- Micro
+- Netcat
+
+Let's start by creating a new folder `sudo mkdir ownstate`
+
+
+*****
 
 
 
@@ -187,6 +222,8 @@ And after that when I opened micro, it was there! As well as git and netcat too.
 
 
 
+
+
 *****
 #### Sources:
 
@@ -195,5 +232,9 @@ SaltStack 2022. Salt.State.Pkg. URL: https://docs.saltproject.io/en/latest/ref/s
 Tero Karvinen 2018. Salt Quickstart - Salt Stack Master and Slace on Ubuntu Linux. URL: https://terokarvinen.com/2018/salt-quickstart-salt-stack-master-and-slave-on-ubuntu-linux/. Accessed: 8.12.2022
 
 Vagrant 2022. Development environments made easy. URL: https://www.vagrantup.com/. Accessed: 8.12.2022
+
+https://terokarvinen.com/2018/salt-states-i-want-my-computers-like-this/?fromSearch=salt
+
+https://terokarvinen.com/2017/04/11/vagrant-revisited-install-boot-new-virtual-machine-in-31-seconds/?fromSearch=vagrant
 
 https://unixcop.com/how-to-open-ports-in-ubuntu-debian/
