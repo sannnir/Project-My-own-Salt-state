@@ -153,7 +153,9 @@ So lets go back to our master and check if there are keys to be accepted
 
 <img width="194" alt="image" src="https://user-images.githubusercontent.com/117899949/207006820-05118f32-e487-4424-8d5b-39f5cd08a16e.png">
 
-So the keys are empty.. Something is not right.
+####*Plot twist:* 
+So the keys were empty. 
+I didn't know how to fix this and got stuck. After two days of googling the problem I still didn't get this. Time was running out so I had to start over and do this again with only two VMs.
 
 
 
