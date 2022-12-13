@@ -55,7 +55,7 @@ In Vagrantfile I am going to use `debian/bullseye64` box, which will be installi
 
 Then I will create the VMs by giving a command `vagrant init Vagrantfile`. 
 
-###### Note: on Windowds notepad will create a Vagrantfile as Vagrantfile.txt format. Make sure the name is just `Vagrantfile` without the .txt. This mistake happened to me and I had to change the make manully after I created this file.
+###### Note: on Windows notepad will create a Vagrantfile as Vagrantfile.txt format. Make sure the name is just `Vagrantfile` without the .txt. This mistake happened to me and I had to change the make manully after I created this file.
 
         vagrant init Vagrantfile
 
@@ -87,7 +87,7 @@ It works. Our test-environment is now ready.
         
 #### Master (Debian 11): 
         
-Sinco our environment is ready, let's create the SaltStack master-minion architecture.
+Since our environment is ready, let's create the SaltStack master-minion architecture.
 I'm going to start by making updates `sudo apt update` to t001 and then installing the Salt master.
 
         sudo apt -y install salt-master
@@ -139,8 +139,12 @@ Now we need to go back to master and check if there are keys to be accepted so t
         sudo salt-key           (to check them out)
         sudo salt-key -A        (to accept them)
         
+<img width="201" alt="image" src="https://user-images.githubusercontent.com/117899949/207290203-595a67b4-38c1-4399-b68e-1ab4d39c8a45.png">
+
+Then little `salt '*' cmd.run 'whoami'` -test just to check that our minion is talking to us:
 <img width="344" alt="image" src="https://user-images.githubusercontent.com/117899949/207037387-82947cf9-fdf0-48f7-acf8-27835fdd6323.png">
 
+All good.
 
 ## 2. Create a Salt state
 
@@ -152,13 +156,17 @@ Let's start by creating a folder for the states
        
 First I will start with easy one: hello world test just to see this works.
 
+        sudoedit hello.sls
+
 Creating the state:
 <img width="323" alt="image" src="https://user-images.githubusercontent.com/117899949/207039397-e690e0b8-3cad-444a-82f6-c5b4f986636e.png">
 
-Applying the state:
+Then I made a hellowordl.txt file with simple content "Hello World!!"
+
+Applying the hello-state:
 <img width="398" alt="image" src="https://user-images.githubusercontent.com/117899949/207039456-6ca863ce-6dc5-46e3-91f8-966fb2b7e38b.png">
 
-Little test:
+Little test to see if our minion got it:
 <img width="461" alt="image" src="https://user-images.githubusercontent.com/117899949/207040993-c3cc7d5b-0a39-436a-810c-39bbb945cd70.png">
 
 All good, so we can move on to creating our own state.
