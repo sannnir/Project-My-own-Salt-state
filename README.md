@@ -11,8 +11,8 @@ This project is part of the course called "Configuration Management Systems - Pa
 I'll be using Virtual Machines on Virtual Box. I am going to create a Salt-master and then few Salt-minions by using Vagrant.
 That will be the environment where I'm goint to test my Salt state.
 
-Git, Micro and Netcat were selected because we have used them a lot during this course and I have found them very useful. This is why I felt it would be nice to try to figure out how to get them to the devices at once instead of doing the downloading manually to each of the vm's.
-Git, Micro and Netcat are also files that are not included to Linux based operation systems by default.
+Git and Micro were selected because we have used them a lot during this course and I have found them very useful. This is why I felt it would be nice to try to figure out how to get them to the devices at once instead of doing the downloading manually to each of the vm's.
+Git and Micro are also files that are not included to Linux based operation systems by default.
 
 You can find all the sources used in this project at the end of this file.
 
@@ -25,10 +25,8 @@ You can find all the sources used in this project at the end of this file.
 ### Tasks
 
 1. Create virtual machines and install a Salt master-minion architecture.
-2. Download Git, Micro and Netcat to master
-3. Copy each programs source list to this salt-project folder and create the init.sls-file
-4. Try the salt state locally first then to the minions.
-
+2. Create a Salt state
+3. Try the salt state locally first and then to the minions.
 
 
 ### 1. Create virtual machines and install a Salt master-minion architecture
@@ -170,7 +168,7 @@ Little test that the master-minion architecture works and we're reade to move on
 
 
 
-## 2. Copy each programs source list to this salt-project folder and create the init.sls-file
+## 2. Create a Salt state
 
 #### Master:
 Let's start by creating a folder for the states
@@ -218,7 +216,9 @@ Sudoedit opens a Nano editor. I added the path and then the packages:
               
 <img width="247" alt="image" src="https://user-images.githubusercontent.com/117899949/207050743-7bb927a1-d3bc-43ff-b912-532f13b5b4e7.png">
 
-Then I tested it locally.
+## 3. Try the salt state locally first and then to the minions.
+
+Now we are ready to do testings. I tested it locally first.
 
 <img width="454" alt="image" src="https://user-images.githubusercontent.com/117899949/207052027-0244f579-be5c-47e8-a82f-54b54b66cf24.png">
 
@@ -231,6 +231,7 @@ And git also:
 <img width="472" alt="image" src="https://user-images.githubusercontent.com/117899949/207052211-6258e8c5-d8b3-4d78-8a74-0c3cdf187e92.png">
 
 Let's run this state to minion too.
+
 
 <img width="488" alt="image" src="https://user-images.githubusercontent.com/117899949/207052751-bffcfcf4-fd6f-43ca-857a-300b1602b885.png">
 
