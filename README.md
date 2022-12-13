@@ -6,7 +6,7 @@ In this project I'm going to create a Salt-state by using SaltStack. My Salt-sta
 - Git
 - Micro
 
-This project is part of the course called "Configuration Management Systems - Palvelinten Hallinta" by Tero Karvinen. You can find more information about this course and the project assignment from [here](https://terokarvinen.com/2022/palvelinten-hallinta-2022p2/). 
+This project is part of the course called "Configuration Management Systems - Palvelinten Hallinta" by Tero Karvinen. You can find more information about this course and the project assignment from [here](https://terokarvinen.com/2022/palvelinten-hallinta-2022p2/).
 
 I'll be using Virtual Machines on Virtual Box. I am going to create a Salt-master and then a Salt-minion by using Vagrant.
 That will be the environment where I'm going to test my Salt state.
@@ -33,11 +33,11 @@ You can find all the sources used in this project at the end of this file.
 
 As a master and a minion I am going to create two virtual machines with the help of Vargant so that I can really test my salt-state on them.
 
-Since I have already installed Vagrant to my host computer (Windows 11 Home) I am going to skip "Install Vagrant"-phase. Vagrant is an open-source tool that helps you create virtual environments super easily. It is recommend to install Vagrant to your host computer. Vagrant also needs a hypervisor, which can be VirtualBox, to be able to create virtual machines. Vagrant uses boxes which are like operating system images that it clones to the new VM. (Vagrant 2022.) You can find different boxes [here](https://app.vagrantup.com/boxes/search).
+Since I have already installed Vagrant to my host computer (Windows 11 Home) I am going to skip "Install Vagrant"-phase. Vagrant is an open-source tool that helps you create virtual environments super easily. It is recommend to install Vagrant to your host computer. Vagrant also needs a hypervisor, which can be VirtualBox, to be able to create virtual machines. Vagrant uses boxes which are like operating system images that it clones to the new VM. (Vagrant 2022a.) You can find different boxes [here](https://app.vagrantup.com/boxes/search) (Vargant 2022b).
 
 #### Virtual Machines:
 
-When using Vagrant with Windows the easiest way is to open Windows PowerShell. So let's open PowerShell and create a new folder for Vagrantfile where I am going to qualify the amount of VMs and also tell which OS box they are going to have. Instructions of creating that Vagrantfile are from [here](https://terokarvinen.com/2021/two-machine-virtual-network-with-debian-11-bullseye-and-vagrant/).
+When using Vagrant with Windows the easiest way is to open Windows PowerShell. So let's open PowerShell and create a new folder for Vagrantfile where I am going to qualify the amount of VMs and also tell which OS box they are going to have. Instructions of creating that Vagrantfile are from [here](https://terokarvinen.com/2021/two-machine-virtual-network-with-debian-11-bullseye-and-vagrant/). (Tero Karvinen 2021.)
 
 First I created `vkoneet` folder where I was going to create the Vagrantfile. I used notepad for creating the Vagrantfile.
 
@@ -253,7 +253,7 @@ Tero Karvinen 2018. Salt Quickstart - Salt Stack Master and Slace on Ubuntu Linu
 
 Tero Karvinen 2021. Two Machine Virtual Network With Debian 11 Bullseye and Vagrant. URL: https://terokarvinen.com/2021/two-machine-virtual-network-with-debian-11-bullseye-and-vagrant/. Accessed: 12.12.2022
 
-Vagrant 2022. Development environments made easy. URL: https://www.vagrantup.com/. Accessed: 8.12.2022
+Vagrant 2022a. Development environments made easy. URL: https://www.vagrantup.com/. Accessed: 8.12.2022
 
-Vagrant 2022. Discover Vagrant Boxes. URL: https://app.vagrantup.com/boxes/search. Accessed: 7.12.2022
+Vagrant 2022b. Discover Vagrant Boxes. URL: https://app.vagrantup.com/boxes/search. Accessed: 7.12.2022
 
