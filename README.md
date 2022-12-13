@@ -142,6 +142,7 @@ Now we need to go back to master and check if there are keys to be accepted so t
 <img width="201" alt="image" src="https://user-images.githubusercontent.com/117899949/207290203-595a67b4-38c1-4399-b68e-1ab4d39c8a45.png">
 
 Then little `salt '*' cmd.run 'whoami'` -test just to check that our minion is talking to us:
+
 <img width="344" alt="image" src="https://user-images.githubusercontent.com/117899949/207037387-82947cf9-fdf0-48f7-acf8-27835fdd6323.png">
 
 All good.
@@ -159,14 +160,17 @@ First I will start with easy one: hello world test just to see this works.
         sudoedit hello.sls
 
 Creating the state:
+
 <img width="323" alt="image" src="https://user-images.githubusercontent.com/117899949/207039397-e690e0b8-3cad-444a-82f6-c5b4f986636e.png">
 
 Then I made a helloworld.txt file with a simple content of "Hello World!!"
 
 Applying the hello-state:
+
 <img width="398" alt="image" src="https://user-images.githubusercontent.com/117899949/207039456-6ca863ce-6dc5-46e3-91f8-966fb2b7e38b.png">
 
 Little test to see if our minion got it:
+
 <img width="461" alt="image" src="https://user-images.githubusercontent.com/117899949/207040993-c3cc7d5b-0a39-436a-810c-39bbb945cd70.png">
 
 All good, so we can move on to creating our own state.
@@ -180,6 +184,7 @@ I wanted to create a state that installs the following programs:
 First I checked that I don't have those on my master:
 
 All good, nothing here:
+
 <img width="370" alt="image" src="https://user-images.githubusercontent.com/117899949/207050535-86e999a3-e232-40e6-9e44-e060c90b74bb.png">
 
 Then I created a new folder `sudo mkdir ownstate`
@@ -204,6 +209,8 @@ All righty then, let's move on.
 ## 3. Try the salt state locally first and then to the minions.
 
 Now we are ready to do testings. I tested it locally first.
+
+        salt-call --local state.apply ownstate
 
 <img width="454" alt="image" src="https://user-images.githubusercontent.com/117899949/207052027-0244f579-be5c-47e8-a82f-54b54b66cf24.png">
 
@@ -235,7 +242,9 @@ Micro:
 
 <img width="311" alt="image" src="https://user-images.githubusercontent.com/117899949/207053216-924baa8d-03b1-426b-ac3c-a83db4eebb87.png">
 
-
+All good.
+So in practice we could have several hundred minions that could be installed with these programs with a single command.
+And that's what makes SaltStack so pretty cool.
 
 *****
 *****
