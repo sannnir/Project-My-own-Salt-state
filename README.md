@@ -14,7 +14,7 @@ That will be the environment where I'm going to test my Salt state.
 Git and Micro were selected because we have used them a lot during this course and I have found them very useful. This is why I felt it would be nice to try to figure out how to get them to the devices at once instead of doing the downloading manually to each of the virtual machines.
 Git and Micro are also files that are not included to Linux based operation systems by default.
 
-You can find all the sources used in this project at the end of this file.
+You can find all the information sources used in this project at the end of this file.
 
 ### Environment
 
