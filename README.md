@@ -48,12 +48,14 @@ First I created `vkoneet` folder where I was going to create the Vagrantfile. I 
 <img width="347" alt="image" src="https://user-images.githubusercontent.com/117899949/206437522-486bdfca-d6f4-400e-9784-55e2cc94562d.png">
 
 In Vagrantfile I am going to use `debian/bullseye64` box, which will be installing Debian 11 OS to the virtual machines. Then there are both of the virtual machines `t001` and `t002` configured, where t001 is going to be the master and t002 minion. 
-Note: You could change the names "t001" to "master" or "minion" etc. but I was lazy and kept them like that.
+
+###### Note: You could change the names "t001" to "master" or "minion" etc. but I was lazy and kept them like that.
 
 <img width="532" alt="image" src="https://user-images.githubusercontent.com/117899949/206436866-933b277d-1be3-45d1-b7f4-3684dda61c9e.png">
 
 Then I will create the VMs by giving a command `vagrant init Vagrantfile`. 
-Note: on Windowds notepad will create a Vagrantfile as Vagrantfile.txt format. Make sure the name is just `Vagrantfile` without the .txt. This mistake happened to me and I had to change the make manully after I created this file.
+
+###### Note: on Windowds notepad will create a Vagrantfile as Vagrantfile.txt format. Make sure the name is just `Vagrantfile` without the .txt. This mistake happened to me and I had to change the make manully after I created this file.
 
         vagrant init Vagrantfile
 
