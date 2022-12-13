@@ -55,7 +55,7 @@ In Vagrantfile I am going to use `debian/bullseye64` box, which will be installi
 
 Then I will create the VMs by giving a command `vagrant init Vagrantfile`. 
 
-###### Note: on Windows notepad will create a Vagrantfile as Vagrantfile.txt format. Make sure the name is just `Vagrantfile` without the .txt. This mistake happened to me and I had to change the make manully after I created this file.
+###### Note: on Windows notepad will create a Vagrantfile as Vagrantfile.txt format. Make sure the name is just `Vagrantfile` without the .txt. This mistake happened to me and I had to change the name manully after I created this file.
 
         vagrant init Vagrantfile
 
