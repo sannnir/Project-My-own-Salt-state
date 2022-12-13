@@ -37,35 +37,19 @@ Since I have already installed Vagrant to my host computer (Windows 11 Home) I a
 
 #### Virtual Machines:
 
-When using Vagrant with Windows the easiest way is to open Windows PowerShell. So let's open Windows PowerShell and create a new folder for Vagrantfile where I am going to qualify the amount of VMs and also tell which OS box they are going to have. Instructions of creating that Vagrantfile are from [here](https://terokarvinen.com/2021/two-machine-virtual-network-with-debian-11-bullseye-and-vagrant/).
+When using Vagrant with Windows the easiest way is to open Windows PowerShell. So let's open PowerShell and create a new folder for Vagrantfile where I am going to qualify the amount of VMs and also tell which OS box they are going to have. Instructions of creating that Vagrantfile are from [here](https://terokarvinen.com/2021/two-machine-virtual-network-with-debian-11-bullseye-and-vagrant/).
 
-First I created `vkoneet` folder where I was going to create the Vagrantfile. 
-
-I created Debian 11 with the box of `debian/bullseye64`. The final commands are `vagrant init <box name>` and `vagrant up` which will create the environment and start it up.
-
-Open PowerShell, create a folder, go there and create a file.
+First I created `vkoneet` folder where I was going to create the Vagrantfile. I used notepad for creating the Vagrantfile.
 
         mkdir vkoneet
         cd ./vkoneet/
         notepad.exe Vagrantfile
 
-        mkdir vms
-        cd vms/
-        vagrant init debian/bullseye64
-        vagrant up
-
-
-
-<img width="416" alt="image" src="https://user-images.githubusercontent.com/117899949/206994665-4e9581c2-23d3-4d69-b5eb-7c385da9fde8.png">
-
-
-
 <img width="347" alt="image" src="https://user-images.githubusercontent.com/117899949/206437522-486bdfca-d6f4-400e-9784-55e2cc94562d.png">
 
-In Vagrantfile I am going to use debian/bullseye64 box, which will install Debian 11 OS to the minion vms.
+In Vagrantfile I am going to use `debian/bullseye64` box, which will installing Debian 11 OS to the virtual machines. Then there are both of the virtual machines `t001` and `t002` where t001 is going to be the master and t002 minion.
 
 <img width="532" alt="image" src="https://user-images.githubusercontent.com/117899949/206436866-933b277d-1be3-45d1-b7f4-3684dda61c9e.png">
-
 
 Then I will crete the VMs by giving a command `vagrant init Vagrantfile`. 
 Note: on Windowds notepad will create a Vagrantfile as Vagrantfile.txt format. Make sure the name is just `Vagrantfile` without the .txt. This mistake happened to me and I had to change the make manully after I created this file.
@@ -77,8 +61,10 @@ Then we are ready to start them by command:
         vagrant up
 
 
-
 <img width="575" alt="image" src="https://user-images.githubusercontent.com/117899949/206442534-3ca699d9-3133-4b8c-89f7-4a4b1c05fa48.png">
+
+<img width="416" alt="image" src="https://user-images.githubusercontent.com/117899949/206994665-4e9581c2-23d3-4d69-b5eb-7c385da9fde8.png">
+
 
 And just like that - I have two virtual machines! One master and one minion:
 
