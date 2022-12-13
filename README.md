@@ -161,7 +161,7 @@ First I will start with easy one: hello world test just to see this works.
 Creating the state:
 <img width="323" alt="image" src="https://user-images.githubusercontent.com/117899949/207039397-e690e0b8-3cad-444a-82f6-c5b4f986636e.png">
 
-Then I made a hellowordl.txt file with simple content "Hello World!!"
+Then I made a helloworld.txt file with a simple content of "Hello World!!"
 
 Applying the hello-state:
 <img width="398" alt="image" src="https://user-images.githubusercontent.com/117899949/207039456-6ca863ce-6dc5-46e3-91f8-966fb2b7e38b.png">
@@ -207,7 +207,7 @@ Now we are ready to do testings. I tested it locally first.
 
 <img width="454" alt="image" src="https://user-images.githubusercontent.com/117899949/207052027-0244f579-be5c-47e8-a82f-54b54b66cf24.png">
 
-Micro can be found:
+Micro can be found when opening inis.sls file with micro `micro init.sls`:
 
 <img width="253" alt="image" src="https://user-images.githubusercontent.com/117899949/207052130-1febcfc8-7743-4469-88be-f15a2ca807d5.png">
 
@@ -217,6 +217,7 @@ And git also:
 
 Let's run this state to minion too.
 
+        sudo salt '*' state.apply ownstate
 
 <img width="488" alt="image" src="https://user-images.githubusercontent.com/117899949/207052751-bffcfcf4-fd6f-43ca-857a-300b1602b885.png">
 
@@ -235,18 +236,24 @@ Micro:
 <img width="311" alt="image" src="https://user-images.githubusercontent.com/117899949/207053216-924baa8d-03b1-426b-ac3c-a83db4eebb87.png">
 
 
+
 *****
 *****
-#### Sources:
+## Sources:
+
+phoenixNAP 2022. How To Use Linux SS Command. URL: https://phoenixnap.com/kb/ss-command. Accessed: 12.12.2022
 
 SaltStack 2022. Salt.State.Pkg. URL: https://docs.saltproject.io/en/latest/ref/states/all/salt.states.pkg.html. Accessed: 7.12.2022
 
+Tero Karvinen 2017. Vagrant Revisited – Install & Boot New Virtual Machine in 31 seconds. URL: https://terokarvinen.com/2017/04/11/vagrant-revisited-install-boot-new-virtual-machine-in-31-seconds/?fromSearch=vagrant Accessed: 12.12.2022
+
+Tero Karvinen 2018. Salt States – I Want My Computers Like This. URL: https://terokarvinen.com/2018/salt-states-i-want-my-computers-like-this/?fromSearch=salt. Accessed: 12.12.2022
+
 Tero Karvinen 2018. Salt Quickstart - Salt Stack Master and Slace on Ubuntu Linux. URL: https://terokarvinen.com/2018/salt-quickstart-salt-stack-master-and-slave-on-ubuntu-linux/. Accessed: 8.12.2022
+
+Tero Karvinen 2021. Two Machine Virtual Network With Debian 11 Bullseye and Vagrant. URL: https://terokarvinen.com/2021/two-machine-virtual-network-with-debian-11-bullseye-and-vagrant/. Accessed: 12.12.2022
 
 Vagrant 2022. Development environments made easy. URL: https://www.vagrantup.com/. Accessed: 8.12.2022
 
-https://terokarvinen.com/2018/salt-states-i-want-my-computers-like-this/?fromSearch=salt
+Vagrant 2022. Discover Vagrant Boxes. URL: https://app.vagrantup.com/boxes/search. Accessed: 7.12.2022
 
-https://terokarvinen.com/2017/04/11/vagrant-revisited-install-boot-new-virtual-machine-in-31-seconds/?fromSearch=vagrant
-
-https://unixcop.com/how-to-open-ports-in-ubuntu-debian/
