@@ -49,7 +49,7 @@ First I created `vkoneet` folder where I was going to create the Vagrantfile. I 
 
 In Vagrantfile I am going to use `debian/bullseye64` box, which will be installing Debian 11 OS to the virtual machines. Then there are both of the virtual machines `t001` and `t002` configured, where t001 is going to be the master and t002 minion. 
 
-###### Note: You could change the names "t001" to "master" or "minion" etc. but I was lazy and kept them like that.
+###### Note: You could change the names "t001" & "t002" to "master" and "minion" etc. but I was lazy and kept them like that.
 
 <img width="532" alt="image" src="https://user-images.githubusercontent.com/117899949/206436866-933b277d-1be3-45d1-b7f4-3684dda61c9e.png">
 
@@ -70,7 +70,7 @@ And just like that - I have two virtual machines! One master and one minion:
 
 <img width="221" alt="image" src="https://user-images.githubusercontent.com/117899949/207284438-2bd7f9c4-4964-4502-80a5-88788d3f67b4.png">
 
-At this point I am goint to make a ping-test from t001 to t002 just to see that the connections between them is ok.
+At this point I am goint to make a ping-test from t001 to t002 just to see that the connection between them is ok.
 
 With Vagrant you can take SSH connection to VMs by command:
 
