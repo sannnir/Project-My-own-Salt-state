@@ -47,11 +47,12 @@ First I created `vkoneet` folder where I was going to create the Vagrantfile. I 
 
 <img width="347" alt="image" src="https://user-images.githubusercontent.com/117899949/206437522-486bdfca-d6f4-400e-9784-55e2cc94562d.png">
 
-In Vagrantfile I am going to use `debian/bullseye64` box, which will installing Debian 11 OS to the virtual machines. Then there are both of the virtual machines `t001` and `t002` where t001 is going to be the master and t002 minion.
+In Vagrantfile I am going to use `debian/bullseye64` box, which will be installing Debian 11 OS to the virtual machines. Then there are both of the virtual machines `t001` and `t002` configured, where t001 is going to be the master and t002 minion. 
+Note: You could change the names "t001" to "master" or "minion" etc. but I was lazy and kept them like that.
 
 <img width="532" alt="image" src="https://user-images.githubusercontent.com/117899949/206436866-933b277d-1be3-45d1-b7f4-3684dda61c9e.png">
 
-Then I will crete the VMs by giving a command `vagrant init Vagrantfile`. 
+Then I will create the VMs by giving a command `vagrant init Vagrantfile`. 
 Note: on Windowds notepad will create a Vagrantfile as Vagrantfile.txt format. Make sure the name is just `Vagrantfile` without the .txt. This mistake happened to me and I had to change the make manully after I created this file.
 
         vagrant init Vagrantfile
@@ -63,110 +64,86 @@ Then we are ready to start them by command:
 
 <img width="575" alt="image" src="https://user-images.githubusercontent.com/117899949/206442534-3ca699d9-3133-4b8c-89f7-4a4b1c05fa48.png">
 
-<img width="416" alt="image" src="https://user-images.githubusercontent.com/117899949/206994665-4e9581c2-23d3-4d69-b5eb-7c385da9fde8.png">
-
-
 And just like that - I have two virtual machines! One master and one minion:
 
-<img width="188" alt="image" src="https://user-images.githubusercontent.com/117899949/207007847-50bc6cc3-4350-49e4-a994-a685b6630b97.png">
+<img width="221" alt="image" src="https://user-images.githubusercontent.com/117899949/207284438-2bd7f9c4-4964-4502-80a5-88788d3f67b4.png">
 
-At this point I am goint to make a ping-test from t001 and t002 to master just to see that the connections between them is ok.
+At this point I am goint to make a ping-test from t001 to t002 just to see that the connections between them is ok.
 
 With Vagrant you can take SSH connection to VMs by command:
 
         vagrant ssh <computername>
 
         vagrant ssh t001
-        ping 10.0.2.15
+        ping 192.168.88.102
         exit
         
-        vagrant ssh t002
-        ping 10.0.2.15
-        exit
-        
-It works. 
+It works. Our test-environment is now ready.
 
-<img width="440" alt="image" src="https://user-images.githubusercontent.com/117899949/206446173-9f57cf61-8778-46c9-88c0-04845f737e6e.png">
-<img width="415" alt="image" src="https://user-images.githubusercontent.com/117899949/206446364-9f655aa5-3f8b-4599-8ef6-f89f3bb79ecb.png">
+<img width="366" alt="image" src="https://user-images.githubusercontent.com/117899949/207284957-1df89089-12ef-48c3-a90b-0bb51dfc594c.png">
 
         
-### Master (Debian 11): 
+#### Master (Debian 11): 
         
-Let's start by making updates `sudo apt update` and then installing the Salt master.
+Sinco our environment is ready, let's create the SaltStack master-minion architecture.
+I'm going to start by making updates `sudo apt update` to t001 and then installing the Salt master.
 
         sudo apt -y install salt-master
 
 At this point I'll make a little test to see that Salt-master has been installed: 
 
-<img width="447" alt="image" src="https://user-images.githubusercontent.com/117899949/206995010-0478a089-74fd-4a0b-a036-345f607330c5.png">
+<img width="449" alt="image" src="https://user-images.githubusercontent.com/117899949/207285729-c353f3b7-868d-41b3-973c-d0b1db8d89cf.png">
 
 Then I'll check the hostname ip from the master so that I am able to manage the minion(s) later on.
 
         hostname -I
 
-<img width="243" alt="image" src="https://user-images.githubusercontent.com/117899949/206995094-197f1c8e-5c8e-438a-b18f-d45308347190.png">
+<img width="197" alt="image" src="https://user-images.githubusercontent.com/117899949/207285804-dab4b358-6cdd-422f-843e-c7171d26fb8f.png">
 
-The last thing is to check that the ports 4505/tcp and 4506/tcp are open.
+The last thing is to check that the ports 4505/tcp and 4506/tcp are open on master. 
 
         ss -lntu
 
-<img width="499" alt="image" src="https://user-images.githubusercontent.com/117899949/206998740-c5527652-8a5e-40cf-823f-c9152d79ccfa.png">
+<img width="585" alt="image" src="https://user-images.githubusercontent.com/117899949/207285937-589f7467-4c46-463d-bc7d-96e7daefe99d.png">
 
 This looks ok. Master is listening those ports.
 
-#### Minions:
+#### Minion (Debian 11):
 
-Now we are going to need some minions. 
-I am going to create another virtual Machines by using Vagrant.
+Still using the Vagrant and repeating the same things to minion as I did to master earlier. Only this time I will install `Salt-minion` to my minion.
 
-
-Next I'm going to update t001 and t002, install Salt-minions to them and add master's ip address to the minion-file so that the minions will know who will manage them. 
-
-        vagrant ssh t001
+        vagrant ssh t002
         sudo apt update
         sudo apt -y install salt-minion
-        
-Then I can go the the minion file and add the master's ip-address to the file. Minion file will be at `etc/salt`
-        
-<img width="304" alt="image" src="https://user-images.githubusercontent.com/117899949/206448789-376f9b6b-712a-4770-a579-dfa34839882a.png">
+ 
+Next I need to tell my minion, who's the boss.
+I'll go to the the minion file and add the master's ip-address to the file. Minion file will be at `etc/salt`
 
-<img width="412" alt="image" src="https://user-images.githubusercontent.com/117899949/207006160-e2ed0448-d8a4-4499-82f0-f8eb087aff09.png">
+        sudoedit /etc/salt/minion
+        
+<img width="261" alt="image" src="https://user-images.githubusercontent.com/117899949/207286884-7cc9b0ab-7cba-4225-b340-52954aaa0e32.png">
+
+<img width="434" alt="image" src="https://user-images.githubusercontent.com/117899949/207286808-b798f201-8d30-414b-9468-8e4143092fe8.png">
 
 After changing the file you have to restart the Salt-minion.
 
         sudo systemctl restart salt-minion.service
         exit
 
-Then I'll repeat this same thing to the t002 too.
+#### Master: 
 
-Only this left is to confirm the keys on master.
-So lets go back to our master and check if there are keys to be accepted
+Now we need to go back to master and check if there are keys to be accepted so that the deal is sealed.
 
-        sudo salt-key 
-
-<img width="194" alt="image" src="https://user-images.githubusercontent.com/117899949/207006820-05118f32-e487-4424-8d5b-39f5cd08a16e.png">
-
-#### *Plot twist:
-So the keys were empty. 
-I didn't know how to fix this and got stuck. After two days of googling the problem I still didn't get this. Time was running out so I had to start over and do this again with only two VMs.*
-
-I deleded all VMs and deleted SaltStacks from VMs. I started over by installing Salt master to the other VM (Debian 11) and Salt-minion to the other one (Debian 11). At least I got familiar with the commands of `sudo apt purge salt-master & salt-minion` and `vagrant destroy`. Yey.
-
-t001 was going to be the master and t002 was going to be the minion.
-
-This time I got the keys so my test-environment was ready. 
-
-<img width="323" alt="image" src="https://user-images.githubusercontent.com/117899949/207035909-fad6153f-27cf-4c92-86c0-52d82a1f4d78.png">
-
-Little test that the master-minion architecture works and we're reade to move on.
-
+        sudo salt-key           (to check them out)
+        sudo salt-key -A        (to accept them)
+        
 <img width="344" alt="image" src="https://user-images.githubusercontent.com/117899949/207037387-82947cf9-fdf0-48f7-acf8-27835fdd6323.png">
-
 
 
 ## 2. Create a Salt state
 
 #### Master:
+
 Let's start by creating a folder for the states
 
         sudo mkdir /srv/salt/
@@ -190,12 +167,12 @@ I wanted to create a state that installs the following programs:
 - Git
 - Micro
 
-First I checked that I don't have thoseo my master:
+First I checked that I don't have those on my master:
 
+All good, nothing here:
 <img width="370" alt="image" src="https://user-images.githubusercontent.com/117899949/207050535-86e999a3-e232-40e6-9e44-e060c90b74bb.png">
 
-
-THen I created a new folder `sudo mkdir ownstate`
+Then I created a new folder `sudo mkdir ownstate`
 
         sudo mkdir ownstate
         cd ownstate
@@ -211,6 +188,8 @@ Sudoedit opens a Nano editor. I added the path and then the packages:
               - micro
               
 <img width="247" alt="image" src="https://user-images.githubusercontent.com/117899949/207050743-7bb927a1-d3bc-43ff-b912-532f13b5b4e7.png">
+
+All righty then, let's move on.
 
 ## 3. Try the salt state locally first and then to the minions.
 
