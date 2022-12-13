@@ -8,8 +8,8 @@ In this project I'm going to create a Salt-state by using SaltStack. My Salt-sta
 
 This project is part of the course called "Configuration Management Systems - Palvelinten Hallinta" by Tero Karvinen. You can find more information about this course and the project assignment from [here](https://terokarvinen.com/2022/palvelinten-hallinta-2022p2/). 
 
-I'll be using Virtual Machines on Virtual Box. I am going to create a Salt-master and then few Salt-minions by using Vagrant.
-That will be the environment where I'm goint to test my Salt state.
+I'll be using Virtual Machines on Virtual Box. I am going to create a Salt-master and then a Salt-minion by using Vagrant.
+That will be the environment where I'm going to test my Salt state.
 
 Git and Micro were selected because we have used them a lot during this course and I have found them very useful. This is why I felt it would be nice to try to figure out how to get them to the devices at once instead of doing the downloading manually to each of the vm's.
 Git and Micro are also files that are not included to Linux based operation systems by default.
@@ -31,56 +31,34 @@ You can find all the sources used in this project at the end of this file.
 
 ### 1. Create virtual machines and install a Salt master-minion architecture
 
-As a master I am going to a virtual machine with the help of Vargant. I'm also going to create two minions too so that I can really test my salt-state on them.
+As a master and a minion I am going to create two virtual machines with the help of Vargant so that I can really test my salt-state on them.
 
-By creating VMs I'm going to use Vagrant which I already have on my host-computer. Vagrant is an open-source tool that helps you create virtual environments super easily. It is recommend to install Vagrant to your host computer. Vagrant also need a hypervisor, which can be VirtualBox, to be able to create virtual machines. Vagrant uses boxes which are like operating system images that it clones to the new VM. (Vagrant 2022.) You can find different boxes [here](https://app.vagrantup.com/boxes/search).
+Since I have already installed Vagrant to my host computer (Windows 11 Home) I am going to skip "Install Vagrant"-phase. Vagrant is an open-source tool that helps you create virtual environments super easily. It is recommend to install Vagrant to your host computer. Vagrant also needs a hypervisor, which can be VirtualBox, to be able to create virtual machines. Vagrant uses boxes which are like operating system images that it clones to the new VM. (Vagrant 2022.) You can find different boxes [here](https://app.vagrantup.com/boxes/search).
 
-#### Master (Debian 11):
-First I created a vms folder to create the VM. I created Debian 11 with the box `debian/bullseye64`. 
+#### Virtual Machines:
 
-        vagrant init debian/bullseye64
-        vagrant up
+When using Vagrant with Windows the easiest way is to open Windows PowerShell. So let's open Windows PowerShell and create a new folder for Vagrantfile where I am going to qualify the amount of VMs and also tell which OS box they are going to have. Instructions of creating that Vagrantfile are from [here](https://terokarvinen.com/2021/two-machine-virtual-network-with-debian-11-bullseye-and-vagrant/).
 
-<img width="416" alt="image" src="https://user-images.githubusercontent.com/117899949/206994665-4e9581c2-23d3-4d69-b5eb-7c385da9fde8.png">
+First I created `vkoneet` folder where I was going to create the Vagrantfile. 
 
-I'll take a ssh connection with Vagrant to my new VM:
-        
-        vagrant ssh
-        
-Let's start by making updates `sudo apt update/sudo apt upgrade` and then installing the Salt master.
-
-        sudo apt -y install salt-master
-
-Little test to see that Salt-master has been installed: 
-
-<img width="447" alt="image" src="https://user-images.githubusercontent.com/117899949/206995010-0478a089-74fd-4a0b-a036-345f607330c5.png">
-
-Then I'll check the hostname ip from the master so that I am able to manage the minions later on.
-
-        hostname -I
-
-<img width="243" alt="image" src="https://user-images.githubusercontent.com/117899949/206995094-197f1c8e-5c8e-438a-b18f-d45308347190.png">
-
-The last thing is to check that the ports 4505/tcp and 4506/tcp are open.
-
-        ss -lntu
-
-<img width="499" alt="image" src="https://user-images.githubusercontent.com/117899949/206998740-c5527652-8a5e-40cf-823f-c9152d79ccfa.png">
-
-This looks ok. Master is listening those ports.
-
-#### Minions:
-
-Now we are going to need some minions. 
-I am going to create two Virtual Machines by using Vagrant.
-
-Since I have already installed Vagrant to my host computer (Windows 11 Home) I am going to skip "Install Vagrant"-phase. Let's open Windows PowerShell and create a new folder for Vagrantfile where I am going to qualify the amount of VMs and also tell which OS box they are going to have. Instructions of creating that Vagrantfile are from [here](https://terokarvinen.com/2021/two-machine-virtual-network-with-debian-11-bullseye-and-vagrant/).
+I created Debian 11 with the box of `debian/bullseye64`. The final commands are `vagrant init <box name>` and `vagrant up` which will create the environment and start it up.
 
 Open PowerShell, create a folder, go there and create a file.
-        
+
         mkdir vkoneet
         cd ./vkoneet/
         notepad.exe Vagrantfile
+
+        mkdir vms
+        cd vms/
+        vagrant init debian/bullseye64
+        vagrant up
+
+
+
+<img width="416" alt="image" src="https://user-images.githubusercontent.com/117899949/206994665-4e9581c2-23d3-4d69-b5eb-7c385da9fde8.png">
+
+
 
 <img width="347" alt="image" src="https://user-images.githubusercontent.com/117899949/206437522-486bdfca-d6f4-400e-9784-55e2cc94562d.png">
 
@@ -97,10 +75,12 @@ Note: on Windowds notepad will create a Vagrantfile as Vagrantfile.txt format. M
 Then we are ready to start them by command:
 
         vagrant up
-        
+
+
+
 <img width="575" alt="image" src="https://user-images.githubusercontent.com/117899949/206442534-3ca699d9-3133-4b8c-89f7-4a4b1c05fa48.png">
 
-And now I have three VMs in total. One master and two becoming minions:
+And just like that - I have two virtual machines! One master and one minion:
 
 <img width="188" alt="image" src="https://user-images.githubusercontent.com/117899949/207007847-50bc6cc3-4350-49e4-a994-a685b6630b97.png">
 
@@ -122,6 +102,36 @@ It works.
 
 <img width="440" alt="image" src="https://user-images.githubusercontent.com/117899949/206446173-9f57cf61-8778-46c9-88c0-04845f737e6e.png">
 <img width="415" alt="image" src="https://user-images.githubusercontent.com/117899949/206446364-9f655aa5-3f8b-4599-8ef6-f89f3bb79ecb.png">
+
+        
+### Master (Debian 11): 
+        
+Let's start by making updates `sudo apt update` and then installing the Salt master.
+
+        sudo apt -y install salt-master
+
+At this point I'll make a little test to see that Salt-master has been installed: 
+
+<img width="447" alt="image" src="https://user-images.githubusercontent.com/117899949/206995010-0478a089-74fd-4a0b-a036-345f607330c5.png">
+
+Then I'll check the hostname ip from the master so that I am able to manage the minion(s) later on.
+
+        hostname -I
+
+<img width="243" alt="image" src="https://user-images.githubusercontent.com/117899949/206995094-197f1c8e-5c8e-438a-b18f-d45308347190.png">
+
+The last thing is to check that the ports 4505/tcp and 4506/tcp are open.
+
+        ss -lntu
+
+<img width="499" alt="image" src="https://user-images.githubusercontent.com/117899949/206998740-c5527652-8a5e-40cf-823f-c9152d79ccfa.png">
+
+This looks ok. Master is listening those ports.
+
+#### Minions:
+
+Now we are going to need some minions. 
+I am going to create another virtual Machines by using Vagrant.
 
 
 Next I'm going to update t001 and t002, install Salt-minions to them and add master's ip address to the minion-file so that the minions will know who will manage them. 
